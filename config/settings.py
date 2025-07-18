@@ -105,7 +105,14 @@ SOCIALACCOUNT_PROVIDERS = {
             'secret': os.getenv('SECKET_ID_YA'),
             'redirect_uri': MAPPING_PROD.get(os.getenv('PROD')), 
         },
-        'SCOPE': ['login:email', 'login:info', 'login:phone'],
+        'SCOPE': [
+            'login:email',    # Доступ к email
+            'login:info',     # Основная информация (имя, фамилия)
+            'login:avatar',   # Аватар пользователя
+        ],
+        'AUTH_PARAMS': {
+            'force_confirm': True,  # Всегда запрашивать подтверждение прав
+        }
     }
 }
 
