@@ -103,7 +103,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'APP': {
             'client_id': os.getenv('CLIENT_ID'),
             'secret': os.getenv('SECKET_ID_YA'),
-            'redirect_uri': MAPPING_PROD.get(os.getenv('PROD')), 
+            'redirect_uri': 'https://tg-stats.onrender.com/accounts/yandex/login/callback/', 
         },
         'SCOPE': [
             'login:email',    # Доступ к email
