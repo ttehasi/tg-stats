@@ -93,6 +93,17 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
+
+SOCIALACCOUNT_PROVIDERS = {
+    'yandex': {
+        'APP': {
+            'client_id': os.getenv('CLIENT_ID'),
+            'secret': os.getenv('SECKET_ID_YA'),
+        },
+        'SCOPE': ['login:email', 'login:info', 'login:avatar', 'login:phone'],
+    }
+}
+
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
