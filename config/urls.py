@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from config.views import IndexView
+from config.views import IndexView, ListView
 
 urlpatterns = [
     path('', IndexView.as_view(), name='main_index'),
@@ -25,5 +25,6 @@ urlpatterns = [
     path('group/', include('config.group_channels.urls')),
     path('accounts/', include('allauth.urls')),
     path('parser/', include('config.parser.urls')),
+    path('list/', ListView.as_view()),
     path('admin/', admin.site.urls),
 ]

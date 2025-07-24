@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'inertia',
     'widget_tweaks',
     'django_bootstrap5',
     'django.contrib.sites',
@@ -91,10 +92,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    'inertia.middleware.InertiaMiddleware',
 ]
 
 MAPPING_PROD = {
-    't':'http://localhost:8000/accounts/yandex/login/callback/',
+    't':'https://localhost:8000/accounts/yandex/login/callback/',
     'f':'https://tg-stats.onrender.com/accounts/yandex/login/callback/'
 }
 
@@ -103,7 +105,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'APP': {
             'client_id': os.getenv('CLIENT_ID'),
             'secret': os.getenv('SECKET_ID_YA'),
-            'redirect_uri': 'https://tg-stats.onrender.com/accounts/yandex/login/callback/', 
+            'redirect_uri': MAPPING_PROD.get(os.getenv('PROD')), 
         },
         'SCOPE': [
             'login:email',    # Доступ к email
